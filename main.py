@@ -5,9 +5,10 @@ import pygame
 # pygame setup
 pygame.init()
 pygame.display.set_caption('loonbs')
-screen = pygame.display.set_mode((1280, 720))
+screen = pygame.display.set_mode((500, 400))
 clock = pygame.time.Clock()
 running = True
+torres = {} #{tipo: [(x, y), (x2, y2), ...]}
 
 while running:
     for event in pygame.event.get():
@@ -15,8 +16,12 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                coloca_torre(screen,(pygame.Vector2(50,50)))
+                torres['bola'] = (50, 50)
+
+    #render
+    coloca_torre(screen, torres)
     screen.fill((90,170,20))
+
 
     pygame.display.flip()
     pygame.display.update()
