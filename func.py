@@ -1,4 +1,4 @@
 import pygame
-def coloca_torre(surf,x,y):
+def coloca_torre(surf,pos):
 
-    pygame.draw.circle(surf,(0,0,0),(x,y),50)
+    pygame.draw.circle(surf,(0,0,0),pos,50)

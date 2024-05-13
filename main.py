@@ -14,9 +14,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
-        
-            coloca_torre(screen,50,50)
+            if event.key == pygame.K_SPACE:
+                coloca_torre(screen,(pygame.Vector2(50,50)))
     screen.fill((90,170,20))
+
     pygame.display.flip()
     pygame.display.update()
 
