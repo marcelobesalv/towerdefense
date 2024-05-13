@@ -1,5 +1,6 @@
 #teste
 #teste2
+from func import *
 import pygame
 # pygame setup
 pygame.init()
@@ -11,4 +12,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN('K_a'):
+            cria_torre(0,0)
     screen.fill('green')
