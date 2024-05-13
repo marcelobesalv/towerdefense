@@ -12,6 +12,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.KEYDOWN('K_a'):
-            cria_torre(0,0)
+        if event.type == pygame.KEYDOWN:
+            coloca_torre(screen,0,0)
     screen.fill('green')
