@@ -29,12 +29,12 @@ while running:
                 torres['quadrado'] = torres['quadrado'][:-1]
                 print('quadrados', torres['quadrado'])
 
-            if event.key == pygame.K_1: #bota torre bola
-                torres['bola'].append((50, 50))
-                print('bolas', torres['bola'])
-            if event.key == pygame.K_q: #remove ultima torre bola
-                torres['bola'] = torres['bola'][:-1]
-                print('bolas', torres['bola'])            
+            if event.key == pygame.K_3: #bota torre triangulo
+                torres['triangulo'].append((200, 100))
+                print('triangulos', torres['triangulo'])
+            if event.key == pygame.K_e: #remove ultima torre triangulo
+                torres['triangulo'] = torres['triangulo'][:-1]
+                print('triangulos', torres['triangulo'])            
     #----------------------------------------render------------------------------------------------------
     screen.fill((90,170,20))
     coloca_torre(screen, torres)
