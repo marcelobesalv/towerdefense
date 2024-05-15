@@ -10,7 +10,7 @@ def coloca_torre(surf,d):
             for pos in lpos:
                 pygame.draw.rect(surf,(0,0,0), pygame.Rect(pos[0]-lado/2, pos[1]-lado/2, lado, lado))
         if torre == 'triangulo':
-            lado = 100
-            altura = lado*(3**(1/2))/2
+            altura = 100
+            lado = 2*altura/(3**(1/2))
             for pos in lpos:
                 pygame.draw.polygon(surf,(0,0,0), [(pos[0]-lado/2, pos[1]+altura/3), (pos[0]+lado/2, pos[1]+altura/3), (pos[0], pos[1]-altura*2/3)])
