@@ -10,32 +10,38 @@ clock = pygame.time.Clock()
 running = True
 torres = {'bola': [], 'quadrado': [], 'triangulo': []} #{tipo: [(x, y), (x2, y2), ...]}
 clear = False
+
+
 while running:
+    mPos = pygame.mouse.get_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1: #bota torre bola
-                torres['bola'].append((50, 50))
+                torres['bola'].append(mPos)
                 print('bolas', torres['bola'])
             if event.key == pygame.K_q: #remove ultima torre bola
                 torres['bola'] = torres['bola'][:-1]
                 print('bolas', torres['bola'])   
 
             if event.key == pygame.K_2: #bota torre quadrado
-                torres['quadrado'].append((100, 0))
+                torres['quadrado'].append(mPos)
                 print('quadrados', torres['quadrado'])
             if event.key == pygame.K_w: #remove ultima torre quadrado
                 torres['quadrado'] = torres['quadrado'][:-1]
                 print('quadrados', torres['quadrado'])
 
             if event.key == pygame.K_3: #bota torre triangulo
-                torres['triangulo'].append((200, 100))
+                torres['triangulo'].append(mPos)
                 print('triangulos', torres['triangulo'])
             if event.key == pygame.K_e: #remove ultima torre triangulo
                 torres['triangulo'] = torres['triangulo'][:-1]
-                print('triangulos', torres['triangulo'])            
-    #----------------------------------------render------------------------------------------------------
+                print('triangulos', torres['triangulo'])  
+
+    #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||         
+    #----------------------------------------RENDER------------------------------------------------------
+    #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||        
     screen.fill((90,170,20))
     coloca_torre(screen, torres)
  
