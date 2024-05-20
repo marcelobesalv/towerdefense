@@ -16,9 +16,18 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         self.mover
 
     def mover(self): #funcao de mover
-        self.target = Vector2(self.waypoints[self.target_waypoint])
-        self.movement = self.target - self.pos
-        self.rect.x += 1
-        print(self.movement.normalize())
-        self.pos += self.movement.normalize() * self.speed
+        if self.target_waypoint < len(self.waypoints):
+            self.target = Vector2(self.waypoints[self.target_waypoint])
+            self.movement = self.target - self.pos
+
+        #calculando a distancia
+        distancia = self.movement.length()
+        #checando  se a distancai é maior doq a velocidade do inimigo
+        if distancia >= self.speed:
+            self.pos += self.movement.normalize() * self.speed
+        else:
+            if distancia != 0:
+                self.pos += self.movement.normalize() * distancia
+            self.target_waypoint + 1 
         self.rect.center = self.pos
+

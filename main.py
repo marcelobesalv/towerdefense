@@ -35,7 +35,7 @@ waypoints = [
     (960,245),
     (960,525),
     (570,525),
-    (570,1000)
+    (570,720)
 ]
 #Importa as imagens.
 img1 = pygame.image.load('imagens/balon.png').convert_alpha() #essa aqui, importa a imagem do inimigo 1
