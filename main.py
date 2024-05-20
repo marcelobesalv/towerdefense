@@ -14,6 +14,7 @@ torres = {'bola': [], 'quadrado': [], 'triangulo': []} #{tipo: [(x, y), (x2, y2)
 clear = False
 
 bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
+bgImg = pygame.transform.scale(bgImg, (1280, 720))
 game_display = pygame.display.set_mode((1280, 720))
 
 #criação de grupos de inimigo (NECESSARIO, visto que tera diferentes tipos de inimigos)
