@@ -34,11 +34,11 @@ waypoints = [
     (500,1000)
     
 ]
-# usarei para importar imagens dos inimogs !!! !!!!! ! !! AINDA PREICSO TESTAR
-img1 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
+#Importa as imagens.
+img1 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha() #essa aqui, importa a imagem do inimigo 1
 #tentativa de chamar inimigo
-enemy = inimigo((waypoints), img1)
-grupo_inimigos.add(enemy)
+enemy = inimigo((waypoints), img1) #setando o inmigo, trajetoria e imagem
+grupo_inimigos.add(enemy) #adicionando inimigo ao grupo
 print (enemy)
 
 
