@@ -23,19 +23,19 @@ grupo_inimigos = pygame.sprite.Group()
 #CRIANDO TRACEJADO DO MAPA 
 waypoints = [
 
-    (1,251),
-    (500,250),
-    (500,100),
-    (300,100),
-    (300,600),
-    (100,600),
-    (100,450),
-    (700,450),
-    (700,160),
-    (875,160),
-    (875,575),
-    (500,575),
-    (500,1000)
+    (0,300),
+    (635,300),
+    (635,135),
+    (420,135),
+    (420,580),
+    (210,580),
+    (210,420),
+    (810,420),
+    (810,245),
+    (960,245),
+    (960,525),
+    (570,525),
+    (570,1000)
 ]
 #Importa as imagens.
 img1 = pygame.image.load('imagens/balon.png').convert_alpha() #essa aqui, importa a imagem do inimigo 1
