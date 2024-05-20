@@ -18,14 +18,21 @@ grupo_inimigos = pygame.sprite.Group()
 #TENTATIVA DE CRIAÇÃO DE WAYPOINTS (DIREÇÕES E POSIÇÕES PARA SEREM IMPLEMENTADAS DEPOIS NO MAPA)
 #CRIANDO TRACEJADO DO MAPA 
 waypoints = [
-    (50,250),
-    (300,250),
+
+    (0,250),
+    (500,250),
+    (500,100),
     (300,100),
-    (400,100),
-    (400,600),
-    (600,600),
-    (800,600),
-    (1000,200)
+    (300,600),
+    (100,600),
+    (100,450),
+    (700,450),
+    (700,160),
+    (870,160),
+    (875,575),
+    (500,575),
+    (500,1000)
+    
 ]
 # usarei para importar imagens dos inimogs !!! !!!!! ! !! AINDA PREICSO TESTAR
 img1 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
