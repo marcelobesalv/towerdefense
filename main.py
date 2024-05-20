@@ -19,7 +19,7 @@ grupo_inimigos = pygame.sprite.Group()
 #CRIANDO TRACEJADO DO MAPA 
 waypoints = [
 
-    (0,250),
+    (1,251),
     (500,250),
     (500,100),
     (300,100),
@@ -28,19 +28,20 @@ waypoints = [
     (100,450),
     (700,450),
     (700,160),
-    (870,160),
+    (875,160),
     (875,575),
     (500,575),
     (500,1000)
-    
 ]
 #Importa as imagens.
-img1 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha() #essa aqui, importa a imagem do inimigo 1
+img1 = pygame.image.load('imagens/balon.png').convert_alpha() #essa aqui, importa a imagem do inimigo 1
+imagem_pqn = pygame.transform.scale (img1, (70,70))
+
 #tentativa de chamar inimigo
-enemy = inimigo((waypoints), img1) #setando o inmigo, trajetoria e imagem
+enemy = inimigo((waypoints), imagem_pqn) #setando o inmigo, trajetoria e imagem
 grupo_inimigos.add(enemy) #adicionando inimigo ao grupo
 print (enemy)
-
+print('fodasse')
 
 pygame.display.flip()
 
