@@ -5,7 +5,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
     def __init__(self, waypoints, image):
         self.waypoints = waypoints
         self.pos = Vector2(self.waypoints[0])
-        self.speed = 2
+        self.speed = 10
         self.target_waypoint = 1
         pygame.sprite.Sprite.__init__(self)
         self.image = image
@@ -19,7 +19,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         if self.target_waypoint < len(self.waypoints):
             self.target = Vector2(self.waypoints[self.target_waypoint])
             self.movement = self.target - self.pos
-
+        print (self.movement)
         #calculando a distancia
         distancia = self.movement.length()
         #checando  se a distancai é maior doq a velocidade do inimigo
@@ -28,6 +28,6 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         else:
             if distancia != 0:
                 self.pos += self.movement.normalize() * distancia
-            self.target_waypoint + 1 
+            self.target_waypoint += 1 
         self.rect.center = self.pos
 

@@ -42,11 +42,10 @@ img1 = pygame.image.load('imagens/balon.png').convert_alpha() #essa aqui, import
 imagem_pqn = pygame.transform.scale (img1, (70,70))
 
 #tentativa de chamar inimigo
-enemy = inimigo((waypoints), imagem_pqn) #setando o inmigo, trajetoria e imagem
+enemy = inimigo(waypoints, imagem_pqn) #setando o inmigo, trajetoria e imagem
 grupo_inimigos.add(enemy) #adicionando inimigo ao grupo
 print (enemy)
-print('fodasse')
-
+print 
 pygame.display.flip()
 
 while running:
