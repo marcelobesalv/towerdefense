@@ -15,11 +15,22 @@ clear = False
 
 #criação de grupos de inimigo (NECESSARIO, visto que tera diferentes tipos de inimigos)
 grupo_inimigos = pygame.sprite.Group()
-
+#TENTATIVA DE CRIAÇÃO DE WAYPOINTS (DIREÇÕES E POSIÇÕES PARA SEREM IMPLEMENTADAS DEPOIS NO MAPA)
+#CRIANDO TRACEJADO DO MAPA 
+waypoints = [
+    (50,250),
+    (300,250),
+    (300,100),
+    (400,100),
+    (400,600),
+    (600,600),
+    (800,600),
+    (1000,200)
+]
 # usarei para importar imagens dos inimogs !!! !!!!! ! !! AINDA PREICSO TESTAR
 img1 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
 #tentativa de chamar inimigo
-enemy = inimigo((200,300), img1)
+enemy = inimigo((waypoints), img1)
 grupo_inimigos.add(enemy)
 print (enemy)
 
@@ -70,6 +81,9 @@ while running:
     #----------------------------------------RENDER------------------------------------------------------
     #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||        
     screen.fill((90,170,20))
+
+    pygame.draw.lines(screen, 'grey0', False, waypoints)
+
     coloca_torre(screen, torres)
 
 pygame.quit()
