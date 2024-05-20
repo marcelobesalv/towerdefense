@@ -7,23 +7,39 @@ from inimigos import *
 # pygame setup
 pygame.init()
 pygame.display.set_caption('loonbs')
-screen = pygame.display.set_mode((500, 400))
+screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 torres = {'bola': [], 'quadrado': [], 'triangulo': []} #{tipo: [(x, y), (x2, y2), ...]}
 clear = False
 
+#criação de grupos de inimigo (NECESSARIO, visto que tera diferentes tipos de inimigos)
+grupo_inimigos = pygame.sprite.Group()
 
 # usarei para importar imagens dos inimogs !!! !!!!! ! !! AINDA PREICSO TESTAR
-inimigo1_img = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
-
-#criação de grupos de inimigo (NECESSARIO, visto que tera diferentes tipos de inimigos)
-inimigo_group = pygame.sprite.Group()
+img1 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
 #tentativa de chamar inimigo
-enemy = inimigo((200,300), inimigo1_img)
+enemy = inimigo((200,300), img1)
+grupo_inimigos.add(enemy)
 print (enemy)
 
+
+pygame.display.flip()
+
 while running:
+    clock.tick (60)
+
+    #update dos grupos
+    grupo_inimigos.update()
+
+    for enemy in grupo_inimigos:
+        grupo_inimigos.draw(screen)
+        enemy.mover()
+
+    pygame.display.flip()
+    pygame.display.update()
+
+
     mPos = pygame.mouse.get_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -55,13 +71,5 @@ while running:
     #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||        
     screen.fill((90,170,20))
     coloca_torre(screen, torres)
- 
-    
-
-
-    pygame.display.flip()
-    pygame.display.update()
-
-    clock.tick(60)  # limits FPS to 60
 
 pygame.quit()
