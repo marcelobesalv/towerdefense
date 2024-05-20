@@ -2,6 +2,8 @@
 #teste2
 from func import *
 import pygame
+from inimigos import *
+
 # pygame setup
 pygame.init()
 pygame.display.set_caption('loonbs')
@@ -11,6 +13,15 @@ running = True
 torres = {'bola': [], 'quadrado': [], 'triangulo': []} #{tipo: [(x, y), (x2, y2), ...]}
 clear = False
 
+
+# usarei para importar imagens dos inimogs !!! !!!!! ! !! AINDA PREICSO TESTAR
+inimigo1_img = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
+
+#criação de grupos de inimigo (NECESSARIO, visto que tera diferentes tipos de inimigos)
+inimigo_group = pygame.sprite.Group()
+#tentativa de chamar inimigo
+enemy = inimigo((200,300), inimigo1_img)
+print (enemy)
 
 while running:
     mPos = pygame.mouse.get_pos()
