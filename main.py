@@ -13,6 +13,9 @@ running = True
 torres = {'bola': [], 'quadrado': [], 'triangulo': []} #{tipo: [(x, y), (x2, y2), ...]}
 clear = False
 
+bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
+game_display = pygame.display.set_mode((1280, 720))
+
 #criação de grupos de inimigo (NECESSARIO, visto que tera diferentes tipos de inimigos)
 grupo_inimigos = pygame.sprite.Group()
 #TENTATIVA DE CRIAÇÃO DE WAYPOINTS (DIREÇÕES E POSIÇÕES PARA SEREM IMPLEMENTADAS DEPOIS NO MAPA)
@@ -88,7 +91,8 @@ while running:
     #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||         
     #----------------------------------------RENDER------------------------------------------------------
     #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||        
-    screen.fill((90,170,20))
+    game_display.blit(bgImg, (0, 0))
+
 
     pygame.draw.lines(screen, 'grey0', False, waypoints)
 
