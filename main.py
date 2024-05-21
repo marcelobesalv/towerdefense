@@ -3,6 +3,7 @@ import pygame
 from inimigos import *
 import sys
 from torretas import *
+from botao import *
 
 
 # pygame setup
@@ -22,7 +23,7 @@ clear = False
 #Imagens do mapa
 bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
 bgImg = pygame.transform.scale(bgImg, (screen_jogo_width, screen_height))
-game_display = pygame.display.set_mode((screen_jogo_width, screen_height))
+
 
 menuImg = pygame.image.load('imagens/loonbs.jpg')
 menuImg = pygame.transform.scale(menuImg, (screen_width, screen_height))
@@ -30,6 +31,13 @@ game_display = pygame.display.set_mode((screen_width, screen_height))
 
 buttonImg = pygame.image.load('imagens/madeira.jpg')
 buttonImg = pygame.transform.scale(buttonImg, (200, 50))
+
+comprar_torreImg = pygame.image.load('imagens/comprartorre1.png')
+comprar_torreImg = pygame.transform.scale(comprar_torreImg, (200, 50))
+
+#criando botoes
+torreta_botao = Botao(screen_jogo_width + 30, 120,comprar_torreImg )
+#cancelar_botao = Botao(screen_jogo_width + 50, 180, )
 
 
 #criando torretas
@@ -172,12 +180,18 @@ def jogo():
         #CLICAR para colocar a torreta
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 posicao_mouse = pygame.mouse.get_pos()
-                if posicao_mouse[0] < screen_width and posicao_mouse[1] < screen_height:
+                if posicao_mouse[0] < screen_jogo_width and posicao_mouse[1] < screen_height:
                     cria_torreta(posicao_mouse) #clica torreta
 
         # Renderização
         game_display.blit(bgImg, (0, 0))
         pygame.draw.lines(screen, 'grey0', False, waypoints)
+
+
+        #tentativa de draw dos botoes
+        #colcar torreta
+        if torreta_botao.draw(screen):
+            print('testando')
 
         # Update dos grupos e desenho dos inimigos
         grupo_inimigos.update()
