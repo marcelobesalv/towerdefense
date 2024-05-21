@@ -53,10 +53,17 @@ waypoints = [
 ]
 
 # Importa as imagens
-img1 = pygame.image.load('imagens/balon.png').convert_alpha()  # Imagem do inimigo 1
-img2 = pygame.image.load('imagens/balon2.png').convert_alpha()  # Imagem do inimigo 2
+dicInimigos = {
+    1: pygame.image.load('imagens/balon.png').convert_alpha(),  # Imagem do inimigo 1
+    2: pygame.image.load('imagens/balon2.png').convert_alpha(),  # Imagem do inimigo 2
+    3: pygame.image.load('imagens/ngbloon.png').convert_alpha()  # Imagem do inimigo 3
+    
+}
+
+# img1 = pygame.image.load('imagens/balon.png').convert_alpha()  # Imagem do inimigo 1
+# img2 = pygame.image.load('imagens/balon2.png').convert_alpha()  # Imagem do inimigo 2
 img3 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
-imagem_pqn = pygame.transform.scale(img1, (70, 70))
+# imagem_pqn = pygame.transform.scale(img1, (70, 70))
 
 
 def draw_text(text, font, color, surface, x, y):
@@ -147,10 +154,13 @@ def main_menu():
 
 # Função principal do jogo
 def jogo():
-    enemy1 = inimigo(waypoints, imagem_pqn)  # Configura o inimigo, trajetória e imagem
-    enemy2 = inimigo(waypoints, img2)
-    grupo_inimigos.add(enemy1)
-    grupo_inimigos.add(enemy2)  # Adiciona o inimigo ao grupo
+    # enemy1 = inimigo(waypoints, imagem_pqn)  # Configura o inimigo, trajetória e imagem
+    # enemy2 = inimigo(waypoints, img2)
+    tipo = 3
+    enemy = inimigo(tipo, waypoints, dicInimigos)
+    # grupo_inimigos.add(enemy1)
+    # grupo_inimigos.add(enemy2)  # Adiciona o inimigo ao grupo
+    grupo_inimigos.add(enemy)
 
     running = True
     while running:

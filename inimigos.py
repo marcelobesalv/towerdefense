@@ -2,13 +2,14 @@ import pygame
 from pygame.math import Vector2
 
 class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
-    def __init__(self, waypoints, image):
+    def __init__(self, tipo, waypoints, images):
         self.waypoints = waypoints
         self.pos = Vector2(self.waypoints[0])
+        self.health = 5
         self.speed = 1
         self.target_waypoint = 1
         pygame.sprite.Sprite.__init__(self)
-        self.image = image
+        self.image = images.get(tipo)
         self.rect = self.image.get_rect() 
         self.rect.center = self.pos
 
