@@ -32,7 +32,7 @@ waypoints = [
 
 # Importa as imagens
 img1 = pygame.image.load('imagens/balon.png').convert_alpha()  # Imagem do inimigo 1
-img2 = pygame.image.load('imagens/balao2.png').convert_alpha()  # Imagem do inimigo 2
+img2 = pygame.image.load('imagens/balon2.png').convert_alpha()  # Imagem do inimigo 2
 imagem_pqn = pygame.transform.scale(img1, (70, 70))
 
 
@@ -46,7 +46,7 @@ def draw_text(text, font, color, surface, x, y):
 def main_menu():
     while True:
         screen.fill((255, 255, 255))
-        draw_text('Loombs', fonte, (0, 0, 0), screen, screen_width // 2, screen_height // 4)
+        draw_text('Loonbs', fonte, (0, 0, 0), screen, screen_width // 2, screen_height // 4)
 
         mx, my = pygame.mouse.get_pos()
 
