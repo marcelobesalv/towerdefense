@@ -2,7 +2,7 @@ from func import *
 import pygame
 from inimigos import *
 import sys
-from torres import *
+from torretas import *
 
 
 # pygame setup
@@ -41,6 +41,7 @@ waypoints = [
 # Importa as imagens
 img1 = pygame.image.load('imagens/balon.png').convert_alpha()  # Imagem do inimigo 1
 img2 = pygame.image.load('imagens/balon2.png').convert_alpha()  # Imagem do inimigo 2
+img3 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
 imagem_pqn = pygame.transform.scale(img1, (70, 70))
 
 
@@ -101,15 +102,15 @@ def jogo():
     running = True
     while running:
         clock.tick(60)
-
+#Funcao de sair do jogo
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 posicao_mouse = pygame.mouse.get_pos()
-                torres = Torres(torre_mouse, posicao_mouse)
-                grupo_torres.add(torres)
+                torre = Torres(img3, posicao_mouse)
+                grupo_torres.add(torre)
 
         # Renderização
         game_display.blit(bgImg, (0, 0))
@@ -119,6 +120,7 @@ def jogo():
         # Update dos grupos e desenho dos inimigos
         grupo_inimigos.update()
         grupo_inimigos.draw(screen)
+        grupo_torres.update (screen)
         grupo_torres.draw(screen)
         for enemy in grupo_inimigos:
             enemy.mover()

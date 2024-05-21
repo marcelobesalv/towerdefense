@@ -1,6 +1,4 @@
 import pygame
-from func import *
-from main import *
 
 class Torres(pygame.sprite.Sprite):
     def __init__(self, image, pos):
