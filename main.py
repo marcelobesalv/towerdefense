@@ -2,6 +2,7 @@ from func import *
 import pygame
 from inimigos import *
 import sys
+from torres import *
 
 
 # pygame setup
@@ -17,6 +18,7 @@ running = True
 torres = {'bola': [], 'quadrado': [], 'triangulo': []}  # {tipo: [(x, y), (x2, y2), ...]}
 clear = False
 
+#Imagens do mapa
 bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
 bgImg = pygame.transform.scale(bgImg, (1280, 720))
 game_display = pygame.display.set_mode((1280, 720))
@@ -25,8 +27,10 @@ menuImg = pygame.image.load('imagens/loonbs.jpg')
 menuImg = pygame.transform.scale(menuImg, (1280, 720))
 game_display = pygame.display.set_mode((1280, 720))
 
-# Criação de grupos de inimigos (necessário, visto que haverá diferentes tipos de inimigos)
-grupo_inimigos = pygame.sprite.Group()
+#Criação de grupos EM GERAL
+grupo_inimigos = pygame.sprite.Group() # Criação de grupos de inimigos (necessário, visto que haverá diferentes tipos de inimigos)
+grupo_torres = pygame.sprite.Group()
+
 # Criação de waypoints (direções e posições para serem implementadas no mapa)
 waypoints = [
     (0, 300), (635, 300), (635, 135), (420, 135), (420, 580),
@@ -102,28 +106,10 @@ def jogo():
             if event.type == pygame.QUIT:
                 running = False
 
-            if event.type == pygame.KEYDOWN:
-                mPos = pygame.mouse.get_pos()
-                if event.key == pygame.K_1:  # Bota torre bola
-                    torres['bola'].append(mPos)
-                    print('bolas', torres['bola'])
-                if event.key == pygame.K_q:  # Remove última torre bola
-                    torres['bola'] = torres['bola'][:-1]
-                    print('bolas', torres['bola'])
-
-                if event.key == pygame.K_2:  # Bota torre quadrado
-                    torres['quadrado'].append(mPos)
-                    print('quadrados', torres['quadrado'])
-                if event.key == pygame.K_w:  # Remove última torre quadrado
-                    torres['quadrado'] = torres['quadrado'][:-1]
-                    print('quadrados', torres['quadrado'])
-
-                if event.key == pygame.K_3:  # Bota torre triângulo
-                    torres['triangulo'].append(mPos)
-                    print('triangulos', torres['triangulo'])
-                if event.key == pygame.K_e:  # Remove última torre triângulo
-                    torres['triangulo'] = torres['triangulo'][:-1]
-                    print('triangulos', torres['triangulo'])
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                posicao_mouse = pygame.mouse.get_pos()
+                torres = Torres(torre_mouse, posicao_mouse)
+                grupo_torres.add(torres)
 
         # Renderização
         game_display.blit(bgImg, (0, 0))
@@ -133,6 +119,7 @@ def jogo():
         # Update dos grupos e desenho dos inimigos
         grupo_inimigos.update()
         grupo_inimigos.draw(screen)
+        grupo_torres.draw(screen)
         for enemy in grupo_inimigos:
             enemy.mover()
 
