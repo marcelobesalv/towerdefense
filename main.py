@@ -21,6 +21,10 @@ bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
 bgImg = pygame.transform.scale(bgImg, (1280, 720))
 game_display = pygame.display.set_mode((1280, 720))
 
+menuImg = pygame.image.load('imagens/loonbs.jpg')
+menuImg = pygame.transform.scale(menuImg, (1280, 720))
+game_display = pygame.display.set_mode((1280, 720))
+
 # Criação de grupos de inimigos (necessário, visto que haverá diferentes tipos de inimigos)
 grupo_inimigos = pygame.sprite.Group()
 # Criação de waypoints (direções e posições para serem implementadas no mapa)
@@ -45,14 +49,15 @@ def draw_text(text, font, color, surface, x, y):
 # Função para o menu principal
 def main_menu():
     while True:
-        screen.fill((255, 255, 255))
-        draw_text('Loonbs', fonte, (0, 0, 0), screen, screen_width // 2, screen_height // 4)
+        game_display.blit(menuImg, (0, 0))
 
         mx, my = pygame.mouse.get_pos()
 
         # Botões
-        button_play = pygame.Rect(screen_width // 2 - 100, screen_height // 2 - 50, 200, 50)
-        button_quit = pygame.Rect(screen_width // 2 - 100, screen_height // 2 + 50, 200, 50)
+        button_play = pygame.Rect(screen_width // 2 - 100, screen_height // 2 + 50, 200, 50)
+        border1 = pygame.Rect(screen_width // 2 - 105, screen_height // 2 + 45, 210, 60)
+        button_quit = pygame.Rect(screen_width // 2 - 100, screen_height // 2 + 150, 200, 50)
+        border2 = pygame.Rect(screen_width // 2 - 105, screen_height // 2 + 145, 210, 60)
 
         if button_play.collidepoint((mx, my)):
             if pygame.mouse.get_pressed()[0]:
@@ -62,11 +67,16 @@ def main_menu():
                 pygame.quit()
                 sys.exit()
 
-        pygame.draw.rect(screen, (0, 0, 0), button_play)
-        pygame.draw.rect(screen, (0, 0, 0), button_quit)
+        corBor = (0,0,0)
+        corBot = (199, 127, 12)
+        corTxt = (255, 255, 255)
+        pygame.draw.rect(screen, corBor, border1)
+        pygame.draw.rect(screen, corBor, border2)
+        pygame.draw.rect(screen, corBot, button_play)
+        pygame.draw.rect(screen, corBot, button_quit)
 
-        draw_text('Jogar', fonte_pequena, (255, 255, 255), screen, screen_width // 2, screen_height // 2 - 25)
-        draw_text('Sair', fonte_pequena, (255, 255, 255), screen, screen_width // 2, screen_height // 2 + 75)
+        draw_text('Jogar', fonte_pequena, corTxt, screen, screen_width // 2, screen_height // 2 + 75)
+        draw_text('Sair', fonte_pequena, corTxt, screen, screen_width // 2, screen_height // 2 + 175)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
