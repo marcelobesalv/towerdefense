@@ -5,7 +5,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
     def __init__(self, waypoints, image):
         self.waypoints = waypoints
         self.pos = Vector2(self.waypoints[0])
-        self.speed = 10
+        self.speed = 1
         self.target_waypoint = 1
         pygame.sprite.Sprite.__init__(self)
         self.image = image

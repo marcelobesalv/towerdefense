@@ -8,8 +8,10 @@ from torretas import *
 # pygame setup
 pygame.init()
 pygame.display.set_caption('loonbs')
-screen_width = 1280
-screen_height = 720
+screen_width = 1600
+screen_height = 900
+screen_jogo_width = 1280
+painel_lateral = 320
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 fonte = pygame.font.Font(None, 74)
@@ -19,12 +21,14 @@ clear = False
 
 #Imagens do mapa
 bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
-bgImg = pygame.transform.scale(bgImg, (1280, 720))
-game_display = pygame.display.set_mode((1280, 720))
+bgImg = pygame.transform.scale(bgImg, (screen_jogo_width, screen_height))
+game_display = pygame.display.set_mode((screen_jogo_width, screen_height))
 
 menuImg = pygame.image.load('imagens/loonbs.jpg')
-menuImg = pygame.transform.scale(menuImg, (1280, 720))
-game_display = pygame.display.set_mode((1280, 720))
+menuImg = pygame.transform.scale(menuImg, (screen_width, screen_height))
+game_display = pygame.display.set_mode((screen_width, screen_height))
+
+
 
 #criando torretas
 def cria_torreta(posicao_mouse):
@@ -35,16 +39,15 @@ def cria_torreta(posicao_mouse):
     else:
         print('nao')
 
-    
 #Criação de grupos EM GERAL
 grupo_inimigos = pygame.sprite.Group() # Criação de grupos de inimigos (necessário, visto que haverá diferentes tipos de inimigos)
 grupo_torres = pygame.sprite.Group()
 
 # Criação de waypoints (direções e posições para serem implementadas no mapa)
 waypoints = [
-    (0, 300), (635, 300), (635, 135), (420, 135), (420, 580),
-    (210, 580), (210, 420), (810, 420), (810, 245), (960, 245),
-    (960, 525), (570, 525), (570, 720)
+    (0, 375), (635, 375), (635, 175), (420, 175), (420, 720),
+    (210, 720), (210, 525), (800, 525), (800, 300), (960, 300),
+    (960, 650), (570, 650), (570, 900)
 ]
 
 # Importa as imagens
@@ -63,16 +66,34 @@ def draw_text(text, font, color, surface, x, y):
 #TESTE DE CRIACAO DE ALGUMAS FUNCOES
 
 # Limite de proximidade da trajetória e de outras torres
-proximidade_limite_trajetoria = 50  # Distância mínima dos waypoints
-proximidade_limite_torres = 70  # Distância mínima entre torres
+proximidade_limite_trajetoria = 25  # Distância mínima dos waypoints
+proximidade_limite_torres = 50 # Distância mínima entre torres
 
 def distancia(p1, p2):
     return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
 
+
+def distancia_ponto_linha(p, p1, p2):
+    if p1 == p2:
+        return distancia(p, p1)
+    
+    x0, y0 = p
+    #coordenadas dos pontos da linha
+    x1, y1 = p1
+    x2, y2 = p2
+    if x1 == x2 and y1 == y2:
+        return distancia(p, p1)
+    
+    # Calcula a distância do ponto à linha
+    numerador = abs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1)
+    denominador = ((y2 - y1) ** 2 + (x2 - x1) ** 2) ** 0.5
+    return numerador / denominador
+
+
 def posicao_valida(posicao):
     # Verifica a proximidade com a trajetória
-    for waypoint in waypoints:
-        if distancia(posicao, waypoint) < proximidade_limite_trajetoria:
+    for i in range(len(waypoints) - 1):
+        if distancia_ponto_linha(posicao, waypoints[i], waypoints[i + 1]) < proximidade_limite_trajetoria:
             return False
     
     # Verifica a proximidade com outras torres
