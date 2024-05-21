@@ -4,7 +4,7 @@ from inimigos import *
 import sys
 from torretas import *
 from botao import *
-
+from mundo import*
 
 # pygame setup
 pygame.init()
@@ -13,6 +13,11 @@ screen_width = 1600
 screen_height = 900
 screen_jogo_width = 1280
 painel_lateral = 320
+
+ultimoBloon = pygame.time.get_ticks()
+spawnCd = 500
+world = mundo()
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 fonte = pygame.font.Font(None, 74)
@@ -162,16 +167,12 @@ def main_menu():
 
 # Função principal do jogo
 def jogo():
-    # enemy1 = inimigo(waypoints, imagem_pqn)  # Configura o inimigo, trajetória e imagem
-    # enemy2 = inimigo(waypoints, img2)
-    tipo = 3
-    enemy = inimigo(tipo, waypoints, dicInimigos)
-    # grupo_inimigos.add(enemy1)
-    # grupo_inimigos.add(enemy2)  # Adiciona o inimigo ao grupo
-    grupo_inimigos.add(enemy)
+    global ultimoBloon
+    world.spawnar()
 
     running = True
     while running:
+       
         clock.tick(60)
         #Funcao de sair do jogo
         for event in pygame.event.get():
@@ -184,6 +185,18 @@ def jogo():
                     cria_torreta(posicao_mouse) #clica torreta
 
         # Renderização
+        if pygame.time.get_ticks() - ultimoBloon > spawnCd:
+            print(world.listaBloon)
+            if world.spawnados < len(world.listaBloon):
+                tipo = world.listaBloon[world.spawnados]
+                enemy = inimigo(tipo, waypoints, dicInimigos)
+                grupo_inimigos.add(enemy)
+                world.spawnados += 1
+                ultimoBloon = pygame.time.get_ticks()
+            # else: 
+            #     world.level += 1
+            #     world.spawnar()
+
         game_display.blit(bgImg, (0, 0))
         pygame.draw.lines(screen, 'grey0', False, waypoints)
 

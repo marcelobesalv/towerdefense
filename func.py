@@ -1,4 +1,6 @@
 import pygame
+
+
 def coloca_torre(surf,d):
     for torre,lpos in d.items():
         if torre == 'bola':
