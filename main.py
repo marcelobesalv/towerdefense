@@ -28,6 +28,8 @@ menuImg = pygame.image.load('imagens/loonbs.jpg')
 menuImg = pygame.transform.scale(menuImg, (screen_width, screen_height))
 game_display = pygame.display.set_mode((screen_width, screen_height))
 
+buttonImg = pygame.image.load('imagens/madeira.jpg')
+buttonImg = pygame.transform.scale(buttonImg, (200, 50))
 
 
 #criando torretas
@@ -129,8 +131,8 @@ def main_menu():
         corTxt = (255, 255, 255)
         pygame.draw.rect(screen, corBor, border1)
         pygame.draw.rect(screen, corBor, border2)
-        pygame.draw.rect(screen, corBot, button_play)
-        pygame.draw.rect(screen, corBot, button_quit)
+        screen.blit(buttonImg, button_play)
+        screen.blit(buttonImg, button_quit)
 
         draw_text('Jogar', fonte_pequena, corTxt, screen, screen_width // 2, screen_height // 2 + 75)
         draw_text('Sair', fonte_pequena, corTxt, screen, screen_width // 2, screen_height // 2 + 175)
