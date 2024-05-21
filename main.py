@@ -67,9 +67,13 @@ waypoints = [
 
 # Importa as imagens
 dicInimigos = {
-    1: pygame.image.load('imagens/balon.png').convert_alpha(),  # Imagem do inimigo 1
-    2: pygame.image.load('imagens/balon2.png').convert_alpha(),  # Imagem do inimigo 2
-    3: pygame.image.load('imagens/ngbloon.png').convert_alpha()  # Imagem do inimigo 3
+    1: pygame.transform.scale(pygame.image.load('imagens/balon.png').convert_alpha(),(70,70)),  # Imagem do inimigo 1
+    2: pygame.transform.scale(pygame.image.load('imagens/balon2.png').convert_alpha(),(70,70)),  # Imagem do inimigo 2
+    3: pygame.transform.scale(pygame.image.load('imagens/balon3.png').convert_alpha(),(70,90)),  # Imagem do inimigo 3
+    4: pygame.transform.scale(pygame.image.load('imagens/balon4.png').convert_alpha(),(70,90)),  # Imagem do inimigo 4
+    5: pygame.transform.scale(pygame.image.load('imagens/ngbloon.png').convert_alpha(),(110,110)),  # Imagem do inimigo 5
+    6: pygame.transform.scale(pygame.image.load('imagens/blimp.png').convert_alpha(),(200,200))  # Imagem do inimigo 6
+
     
 }
 

@@ -1,0 +1,2 @@
+VIDA = 10
+DINHEIRO = 0
