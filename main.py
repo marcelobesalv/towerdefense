@@ -15,7 +15,6 @@ clock = pygame.time.Clock()
 fonte = pygame.font.Font(None, 74)
 fonte_pequena = pygame.font.Font(None, 37)
 running = True
-torres = {'bola': [], 'quadrado': [], 'triangulo': []}  # {tipo: [(x, y), (x2, y2), ...]}
 clear = False
 
 #Imagens do mapa
@@ -27,6 +26,16 @@ menuImg = pygame.image.load('imagens/loonbs.jpg')
 menuImg = pygame.transform.scale(menuImg, (1280, 720))
 game_display = pygame.display.set_mode((1280, 720))
 
+#criando torretas
+def cria_torreta(posicao_mouse):
+    if posicao_valida(posicao_mouse):
+        torre = Torres(img3, posicao_mouse)
+        grupo_torres.add(torre)
+        print ('sim', posicao_mouse)
+    else:
+        print('nao')
+
+    
 #Criação de grupos EM GERAL
 grupo_inimigos = pygame.sprite.Group() # Criação de grupos de inimigos (necessário, visto que haverá diferentes tipos de inimigos)
 grupo_torres = pygame.sprite.Group()
@@ -50,6 +59,28 @@ def draw_text(text, font, color, surface, x, y):
     textrect = textobj.get_rect()
     textrect.center = (x, y)
     surface.blit(textobj, textrect)
+
+#TESTE DE CRIACAO DE ALGUMAS FUNCOES
+
+# Limite de proximidade da trajetória e de outras torres
+proximidade_limite_trajetoria = 50  # Distância mínima dos waypoints
+proximidade_limite_torres = 70  # Distância mínima entre torres
+
+def distancia(p1, p2):
+    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
+
+def posicao_valida(posicao):
+    # Verifica a proximidade com a trajetória
+    for waypoint in waypoints:
+        if distancia(posicao, waypoint) < proximidade_limite_trajetoria:
+            return False
+    
+    # Verifica a proximidade com outras torres
+    for torre in grupo_torres:
+        if distancia(posicao, torre.rect.center) < proximidade_limite_torres:
+            return False
+
+    return True
 
 # Função para o menu principal
 def main_menu():
@@ -97,25 +128,23 @@ def jogo():
     enemy2 = inimigo(waypoints, img2)
     grupo_inimigos.add(enemy1)
     grupo_inimigos.add(enemy2)  # Adiciona o inimigo ao grupo
-    print(enemy1)
 
     running = True
     while running:
         clock.tick(60)
-#Funcao de sair do jogo
+        #Funcao de sair do jogo
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
+        #CLICAR para colocar a torreta
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 posicao_mouse = pygame.mouse.get_pos()
-                torre = Torres(img3, posicao_mouse)
-                grupo_torres.add(torre)
+                if posicao_mouse[0] < screen_width and posicao_mouse[1] < screen_height:
+                    cria_torreta(posicao_mouse) #clica torreta
 
         # Renderização
         game_display.blit(bgImg, (0, 0))
         pygame.draw.lines(screen, 'grey0', False, waypoints)
-        coloca_torre(screen, torres)
 
         # Update dos grupos e desenho dos inimigos
         grupo_inimigos.update()
