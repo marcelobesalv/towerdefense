@@ -3,7 +3,10 @@ from pygame.math import Vector2
 from stats import *
 from mundo import *
 
+pygame.mixer.init()
+popSound = pygame.mixer.Sound("audio/pop.wav")
 world = mundo()
+
 class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
     def __init__(self, tipo, waypoints, images):
         self.waypoints = waypoints
@@ -45,4 +48,5 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         if self.health <= 0:
             world.money += 50
             world.kills += 1
+            pygame.mixer.Sound.play(popSound)
             self.kill()
