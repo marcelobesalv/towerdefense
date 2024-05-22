@@ -92,7 +92,7 @@ dicInimigos = {
     3: pygame.transform.scale(pygame.image.load('imagens/balon3.png').convert_alpha(),(70,90)),  # Imagem do inimigo 3
     4: pygame.transform.scale(pygame.image.load('imagens/balon4.png').convert_alpha(),(70,90)),  # Imagem do inimigo 4
     5: pygame.transform.scale(pygame.image.load('imagens/ngbloon.png').convert_alpha(),(110,110)),  # Imagem do inimigo 5
-    6: pygame.transform.scale(pygame.image.load('imagens/blimp.png').convert_alpha(),(200,200))  # Imagem do inimigo 6
+    6: pygame.transform.scale(pygame.image.load('imagens/bolon.png').convert_alpha(),(180,210))  # Imagem do inimigo 6
 
 }
 
