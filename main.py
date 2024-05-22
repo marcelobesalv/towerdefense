@@ -56,18 +56,22 @@ cancelar_botao = Botao(screen_jogo_width + 30, 300, buttonImg)
 
 #criando torretas
 def cria_torreta(posicao_mouse, tipo_torre):
+    r = 0
     if tipo_torre is not None and posicao_valida(posicao_mouse):
         if tipo_torre == 1:
             imagem_torre = [nishi,nishiat]
+            r = 400
         elif tipo_torre == 2:
             imagem_torre = [zeca,zecaat]
+            r = 250
         elif tipo_torre == 3:
             imagem_torre = [shrek,shrekat]
+            r = 150
         else:
             imagem_torre = None
         
         if imagem_torre:
-            torre = Torres(imagem_torre, posicao_mouse, tipo_torre)
+            torre = Torres(imagem_torre, posicao_mouse, tipo_torre,r)
             grupo_torres.add(torre)
             print('Torre colocada em:', posicao_mouse)
         else:
@@ -118,7 +122,10 @@ def draw_text(text, font, color, surface, x, y):
     surface.blit(textobj, textrect)
 
 #TESTE DE CRIACAO DE ALGUMAS FUNCOES
-
+def draw_hud(world, score):
+    draw_text(f'Vida: {world.health}', fonte_pequena, (255, 255, 255), screen, screen_jogo_width - 80, 40)
+    draw_text(f'Dinheiro: {world.money}', fonte_pequena, (255, 255, 255), screen, screen_jogo_width - 80, 80)
+    draw_text(f'Score: {score}', fonte_pequena, (255, 255, 255), screen, screen_jogo_width-80,120)
 # Limite de proximidade da trajetória e de outras torres
 proximidade_limite_trajetoria = 25  # Distância mínima dos waypoints
 proximidade_limite_torres = 50 # Distância mínima entre torres
@@ -206,7 +213,10 @@ def jogo():
     torre_selecionada = None
 
     iniciarLvl = False
-    
+    score = 0
+    tempo_inicial = pygame.time.get_ticks()
+
+
 
     running = True
     while running:
@@ -255,7 +265,10 @@ def jogo():
 
         game_display.blit(bgImg, (0, 0))
         pygame.draw.lines(screen, 'grey0', False, waypoints)
+        tempo_atual = pygame.time.get_ticks()
+        score = (tempo_atual - tempo_inicial) // 1000 * 10
 
+        draw_hud(world,score)
         #tentativa de draw dos botoes
         #colcar torreta
         if torreta_botao1.draw(screen):
