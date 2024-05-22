@@ -58,11 +58,11 @@ cancelar_botao = Botao(screen_jogo_width + 30, 300, buttonImg)
 def cria_torreta(posicao_mouse, tipo_torre):
     if tipo_torre is not None and posicao_valida(posicao_mouse):
         if tipo_torre == 1:
-            imagem_torre = img3
+            imagem_torre = [nishi,nishiat]
         elif tipo_torre == 2:
-            imagem_torre = img4
+            imagem_torre = [zeca,zecaat]
         elif tipo_torre == 3:
-            imagem_torre = img5
+            imagem_torre = [shrek,shrekat]
         else:
             imagem_torre = None
         
@@ -101,7 +101,13 @@ dicInimigos = {
 # img2 = pygame.image.load('imagens/balon2.png').convert_alpha()  # Imagem do inimigo 2
 img3 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
 img4 = pygame.image.load('imagens/ngbloon.png').convert_alpha()  # Exemplo de imagem para torre 2
-img5 = pygame.image.load('imagens/comprartorre1.png').convert_alpha()  # Exemplo de imagem para torre 3
+img5 = pygame.image.load('imagens/comprartorre1.png').convert_alpha()# Exemplo de imagem para torre 3
+nishi = pygame.image.load('imagens/nishi.png').convert_alpha()
+nishiat = pygame.image.load('imagens/nishiasf.png').convert_alpha()
+zeca = pygame.image.load('imagens/zecau.png').convert_alpha()
+zecaat = pygame.image.load('imagens/zecausf.png').convert_alpha()
+shrek = pygame.image.load('imagens/shreksbsf.png').convert_alpha()
+shrekat = pygame.image.load('imagens/shrekbsf.png').convert_alpha()
 # imagem_pqn = pygame.transform.scale(img1, (70, 70))
 
 
@@ -260,7 +266,7 @@ def jogo():
         # Update dos grupos e desenho dos inimigos
         grupo_inimigos.update()
         grupo_inimigos.draw(screen)
-        grupo_torres.update (screen)
+        grupo_torres.update ()
         grupo_torres.draw(screen)
         for enemy in grupo_inimigos:
             enemy.mover()
