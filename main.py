@@ -204,7 +204,6 @@ def jogo():
 
     running = True
     while running:
-        print(world.passou)
         clock.tick(60)
         #Funcao de sair do jogo
         for event in pygame.event.get():
@@ -237,7 +236,15 @@ def jogo():
                     grupo_inimigos.add(enemy)
                     world.spawnados += 1
                     ultimoBloon = pygame.time.get_ticks()
-                
+        print
+        if world.levelCompleto() == True:
+            iniciarLvl = False
+            world.level += 1
+            ultimoBloon = pygame.time.get_ticks()
+            world.kills = 0
+            world.passou = 0
+            world.listaBloon = []
+            world.spawnar()
 
         game_display.blit(bgImg, (0, 0))
         pygame.draw.lines(screen, 'grey0', False, waypoints)

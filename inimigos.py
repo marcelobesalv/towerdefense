@@ -26,6 +26,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         else:
             self.kill()
             world.passou += 1
+            print(world.passou)
             print('--------------------------------------------------------')
         #calculando a distancia
         distancia = self.movement.length()
