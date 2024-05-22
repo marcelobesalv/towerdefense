@@ -18,6 +18,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         self.image = images.get(tipo)
         self.rect = self.image.get_rect() 
         self.rect.center = self.pos
+        self.tipo = tipo
 
     def update(self, world):
         self.mover()
@@ -28,8 +29,19 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
             self.target = Vector2(self.waypoints[self.target_waypoint])
             self.movement = self.target - self.pos
         else:
+            if self.tipo == 1:
+                world.health -= 1
+            elif self.tipo == 2:
+                world.health -= 2
+            elif self.tipo == 3:
+                world.health -= 5
+            elif self.tipo == 4:
+                world.health -= 10
+            elif self.tipo == 5:
+                world.health -= 30
+            elif self.tipo == 6:
+                world.health -= 100
             self.kill()
-            world.health -= 10
             world.passou += 1
             print(world.passou)
             print('--------------------------------------------------------')
@@ -46,7 +58,18 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
 
     def checaVida(self, world):
         if self.health <= 0:
-            world.money += 50
+            if self.tipo == 1:
+                world.money += 10
+            elif self.tipo == 2:
+                world.money += 20
+            elif self.tipo == 3:
+                world.money += 30
+            elif self.tipo == 4:
+                world.money += 40
+            elif self.tipo == 5:
+                world.money += 80
+            elif self.tipo == 6:
+                world.money += 150
             world.kills += 1
             pygame.mixer.Sound.play(popSound)
             self.kill()
