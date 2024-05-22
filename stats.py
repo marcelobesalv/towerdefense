@@ -110,10 +110,10 @@ statsBloon = {
     }, 
     5: {
         'health' : 15,
-        'speed': 15
+        'speed': 9
     },
     6: {
-        'health' : 75,
-        'speed': 3
+        'health' : 50,
+        'speed': 1.5
     }
 }
