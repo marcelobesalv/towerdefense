@@ -286,7 +286,7 @@ def jogo():
             world.spawnar()
 
         game_display.blit(bgImg, (0, 0))
-        pygame.draw.lines(screen, 'grey0', False, waypoints)
+        
         tempo_atual = pygame.time.get_ticks()
         score = (tempo_atual - tempo_inicial) // 1000 * 10
 
