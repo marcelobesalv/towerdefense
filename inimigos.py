@@ -1,7 +1,9 @@
 import pygame
 from pygame.math import Vector2
 from stats import *
+from mundo import *
 
+world = mundo()
 class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
     def __init__(self, tipo, waypoints, images):
         self.waypoints = waypoints
@@ -21,6 +23,10 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         if self.target_waypoint < len(self.waypoints):
             self.target = Vector2(self.waypoints[self.target_waypoint])
             self.movement = self.target - self.pos
+        else:
+            self.kill()
+            world.passou += 1
+            print('--------------------------------------------------------')
         #calculando a distancia
         distancia = self.movement.length()
         #checando  se a distancai é maior doq a velocidade do inimigo
@@ -32,3 +38,8 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
             self.target_waypoint += 1 
         self.rect.center = self.pos
 
+    def checaVida(self):
+        if self.health <= 0:
+            world.money += 50
+            world.kills += 1
+            self.kill()

@@ -18,6 +18,7 @@ ultimoBloon = pygame.time.get_ticks()
 spawnCd = 500
 world = mundo()
 
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 fonte = pygame.font.Font(None, 74)
@@ -170,6 +171,8 @@ def main_menu():
             if pygame.mouse.get_pressed()[0]:
                 pygame.quit()
                 sys.exit()
+        
+        
 
         corBor = (0,0,0)
         corBot = (199, 127, 12)
@@ -196,9 +199,12 @@ def jogo():
     world.spawnar()
     torre_selecionada = None
 
+    iniciarLvl = False
+    
+
     running = True
     while running:
-
+        print(world.passou)
         clock.tick(60)
         #Funcao de sair do jogo
         for event in pygame.event.get():
@@ -214,17 +220,24 @@ def jogo():
                     print("Nenhuma torre selecionada")
 
         # Renderização
-        if pygame.time.get_ticks() - ultimoBloon > spawnCd:
-            print(world.listaBloon)
-            if world.spawnados < len(world.listaBloon):
-                tipo = world.listaBloon[world.spawnados]
-                enemy = inimigo(tipo, waypoints, dicInimigos)
-                grupo_inimigos.add(enemy)
-                world.spawnados += 1
-                ultimoBloon = pygame.time.get_ticks()
-            # else: 
-            #     world.level += 1
-            #     world.spawnar()
+        if iniciarLvl == False:
+            button_start = pygame.Rect(screen_width // 2 + 510, screen_height // 2 + 300, 200, 50)
+            pygame.draw.rect(screen, (255,255,255), button_start)
+            screen.blit(buttonImg, button_start)
+            draw_text('Iniciar', fonte_pequena, (255,255,255), screen, screen_width // 2+610, screen_height // 2 + 325)
+            mx, my = pygame.mouse.get_pos()
+            if button_start.collidepoint((mx, my)):
+                if pygame.mouse.get_pressed()[0]:
+                    iniciarLvl = True  # comeca round
+        else:
+            if pygame.time.get_ticks() - ultimoBloon > spawnCd:
+                if world.spawnados < len(world.listaBloon):
+                    tipo = world.listaBloon[world.spawnados]
+                    enemy = inimigo(tipo, waypoints, dicInimigos)
+                    grupo_inimigos.add(enemy)
+                    world.spawnados += 1
+                    ultimoBloon = pygame.time.get_ticks()
+                
 
         game_display.blit(bgImg, (0, 0))
         pygame.draw.lines(screen, 'grey0', False, waypoints)

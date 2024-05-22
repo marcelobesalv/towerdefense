@@ -11,6 +11,9 @@ class mundo():
         self.health = j.VIDA
         self.money = j.DINHEIRO
 
+        self.kills = 0
+        self.passou = 0
+
     def spawnar(self):
         inimigos = waves[self.level-1]
         for tipo in inimigos:
@@ -19,3 +22,8 @@ class mundo():
                 self.listaBloon.append(tipo)
         random.shuffle(self.listaBloon)
         print(self.listaBloon)
+
+
+    # def levelCompleto(self):
+
+        
