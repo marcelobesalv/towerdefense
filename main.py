@@ -148,6 +148,10 @@ def draw_hud(world, score):
     draw_text(f'Vida: {world.health}', fonte_pequena, (255, 255, 255), screen, screen_jogo_width - 100, 40)
     draw_text(f'Dinheiro: {world.money}', fonte_pequena, (255, 255, 255), screen, screen_jogo_width - 100, 80)
     draw_text(f'Nível: {world.level}', fonte_pequena, (255, 255, 255), screen, screen_jogo_width- 100,120)
+    draw_text(f'------------------------' , fonte_pequena, (255, 255, 255), screen, screen_jogo_width- 100,135)
+    draw_text(f'Custo: 100', fonte_pequena, (227, 213, 11), screen, screen_jogo_width - 85, 150) 
+    draw_text(f'Custo: 200', fonte_pequena, (227, 213, 11), screen, screen_jogo_width - 85, 205)
+    draw_text(f'Custo: 400', fonte_pequena, (227, 213, 11), screen, screen_jogo_width - 85, 270)
 # Limite de proximidade da trajetória e de outras torres
 proximidade_limite_trajetoria = 25  # Distância mínima dos waypoints
 proximidade_limite_torres = 50 # Distância mínima entre torres
