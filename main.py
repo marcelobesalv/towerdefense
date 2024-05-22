@@ -54,7 +54,7 @@ comprar_torre3Img = pygame.transform.scale(comprar_torre3Img, (200, 50))
 torreta_botao1 = Botao(screen_jogo_width + 30, 120,comprar_torre1Img)
 torreta_botao2 = Botao(screen_jogo_width + 30, 180,comprar_torre2Img)
 torreta_botao3 = Botao(screen_jogo_width + 30, 240, comprar_torre3Img)
-cancelar_botao = Botao(screen_jogo_width + 30, 300, buttonImg)
+
 
 def gameover():
     gameover = pygame.transform.scale(pygame.image.load('imagens/gameover.png'),(1600,900))
@@ -300,9 +300,6 @@ def jogo():
         if torreta_botao3.draw(screen):
             print('testando3')
             torre_selecionada = 3
-        if cancelar_botao.draw(screen):
-            print('Botão de cancelar pressionado')
-            torre_selecionada = None
         if world.health <= 0:
             gameover()
         # Update dos grupos e desenho dos inimigos
