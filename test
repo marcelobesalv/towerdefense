@@ -56,23 +56,11 @@ cancelar_botao = Botao(screen_jogo_width + 30, 300, buttonImg)
 #criando torretas
 def cria_torreta(posicao_mouse, tipo_torre):
     if tipo_torre is not None and posicao_valida(posicao_mouse):
-        if tipo_torre == 1:
-            imagem_torre = img3
-        elif tipo_torre == 2:
-            imagem_torre = img4
-        elif tipo_torre == 3:
-            imagem_torre = img5
-        else:
-            imagem_torre = None
-        
-        if imagem_torre:
-            torre = Torres(imagem_torre, posicao_mouse, tipo_torre)
-            grupo_torres.add(torre)
-            print('Torre colocada em:', posicao_mouse)
-        else:
-            print('Tipo de torre desconhecido:', tipo_torre)
+        torre = Torres(img3, posicao_mouse, tipo_torre)
+        grupo_torres.add(torre)
+        print('Torre colocada em:', posicao_mouse)
     else:
-     print('Posição inválida para torre:', posicao_mouse)
+        print('Posição inválida para torre:', posicao_mouse)
 
 #Criação de grupos EM GERAL
 grupo_inimigos = pygame.sprite.Group() # Criação de grupos de inimigos (necessário, visto que haverá diferentes tipos de inimigos)
@@ -94,6 +82,7 @@ dicInimigos = {
     5: pygame.transform.scale(pygame.image.load('imagens/ngbloon.png').convert_alpha(),(110,110)),  # Imagem do inimigo 5
     6: pygame.transform.scale(pygame.image.load('imagens/blimp.png').convert_alpha(),(200,200))  # Imagem do inimigo 6
 
+    
 }
 
 # img1 = pygame.image.load('imagens/balon.png').convert_alpha()  # Imagem do inimigo 1
