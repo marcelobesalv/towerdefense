@@ -66,16 +66,22 @@ def cria_torreta(posicao_mouse, tipo_torre):
                 world.money -= 100
                 imagem_torre = [nishi,nishiat]
                 r = 400
+            else:
+                imagem_torre = None
         elif tipo_torre == 2:
             if world.money >= 200:
                 world.money -= 200
                 imagem_torre = [zeca,zecaat]
                 r = 250
+            else:
+                imagem_torre = None
         elif tipo_torre == 3:
             if world.money >= 400:
                 world.money -= 400
                 imagem_torre = [shrek,shrekat]
                 r = 150
+            else:
+                imagem_torre = None
         else:
             imagem_torre = None
         
