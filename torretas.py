@@ -3,7 +3,7 @@ import math
 
 
 class Torres(pygame.sprite.Sprite):
-    def __init__(self, imagelist, pos, tipo_torre):
+    def __init__(self, imagelist, pos, tipo_torre,r):
         super().__init__()
         pygame.sprite.Sprite.__init__(self)
 
@@ -16,7 +16,7 @@ class Torres(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=pos)
         self.tipo_torre = tipo_torre
 
-        self.range = 500
+        self.range = r
         self.cooldown = 500
         self.target = None
         self.angle = 90
