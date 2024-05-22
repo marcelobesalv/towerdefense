@@ -17,7 +17,8 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         self.rect.center = self.pos
 
     def update(self):
-        self.mover
+        self.mover()
+        self.checaVida()
 
     def mover(self): #funcao de mover
         if self.target_waypoint < len(self.waypoints):

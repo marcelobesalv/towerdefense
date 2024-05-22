@@ -25,8 +25,15 @@ class Torres(pygame.sprite.Sprite):
 
     def escolheAlvo(self, grupo_inimigos):
         for i in grupo_inimigos:
-            self.target = i
-            print('alvo')
+            if i.health > 0:
+                self.target = i
+                print('alvo')
+                if self.tipo_torre == 1:
+                    self.target.health -= 1
+                elif self.tipo_torre == 2:
+                    self.target.health -= 3
+                elif self.tipo_torre == 3:
+                    self.target.health -= 5
 
     def update(self, grupo_inimigos):
         if self.target:
