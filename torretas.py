@@ -15,14 +15,15 @@ class Torres(pygame.sprite.Sprite):
         self.image = self.animationlist[self.framei]
         self.rect = self.image.get_rect(center=pos)
         self.tipo_torre = tipo_torre
-
+        
         self.range = r
         self.cooldown = 500
         self.target = None
-        self.angle = 90
-        self.imageRot = pygame.transform.rotate(self.image, self.angle)
-
+        self.angle = 180
         
+
+        self.original_image = self.animationlist[self.framei]
+        self.image = pygame.transform.rotate(self.original_image, self.angle)
 
     def escolheAlvo(self, grupo_inimigos):
         x_dist = 0
@@ -33,6 +34,7 @@ class Torres(pygame.sprite.Sprite):
             dist = math.sqrt(x_dist**2+y_dist**2)
             if dist < self.range:
                 if i.health > 0:
+                    self.angle = math.degrees(math.atan2(-y_dist, x_dist))
                     self.target = i
                     print('alvo')
                     if self.tipo_torre == 1:
@@ -50,7 +52,9 @@ class Torres(pygame.sprite.Sprite):
                 self.escolheAlvo(grupo_inimigos)
 
     def playanim(self):
-        self.image = self.animationlist[self.framei]
+        self.original_image = self.animationlist[self.framei]
+        self.image = pygame.transform.rotate(self.original_image, self.angle-90)
+        
         if pygame.time.get_ticks() - self.updatetime > 150:
             self.updatetime = pygame.time.get_ticks()
             self.framei +=1

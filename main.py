@@ -31,6 +31,8 @@ bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
 bgImg = pygame.transform.scale(bgImg, (screen_jogo_width, screen_height))
 
 
+
+
 menuImg = pygame.image.load('imagens/loonbs.jpg')
 menuImg = pygame.transform.scale(menuImg, (screen_width, screen_height))
 game_display = pygame.display.set_mode((screen_width, screen_height))
@@ -57,16 +59,29 @@ cancelar_botao = Botao(screen_jogo_width + 30, 300, buttonImg)
 #criando torretas
 def cria_torreta(posicao_mouse, tipo_torre):
     r = 0
+
     if tipo_torre is not None and posicao_valida(posicao_mouse):
         if tipo_torre == 1:
-            imagem_torre = [nishi,nishiat]
-            r = 400
+            if world.money >= 100:
+                world.money -= 100
+                imagem_torre = [nishi,nishiat]
+                r = 400
+            else:
+                imagem_torre = None
         elif tipo_torre == 2:
-            imagem_torre = [zeca,zecaat]
-            r = 250
+            if world.money >= 200:
+                world.money -= 200
+                imagem_torre = [zeca,zecaat]
+                r = 250
+            else:
+                imagem_torre = None
         elif tipo_torre == 3:
-            imagem_torre = [shrek,shrekat]
-            r = 150
+            if world.money >= 400:
+                world.money -= 400
+                imagem_torre = [shrek,shrekat]
+                r = 150
+            else:
+                imagem_torre = None
         else:
             imagem_torre = None
         
@@ -106,10 +121,10 @@ dicInimigos = {
 img3 = pygame.image.load('imagens/inimigo1.teste.png').convert_alpha()
 img4 = pygame.image.load('imagens/ngbloon.png').convert_alpha()  # Exemplo de imagem para torre 2
 img5 = pygame.image.load('imagens/comprartorre1.png').convert_alpha()# Exemplo de imagem para torre 3
-nishi = pygame.image.load('imagens/nishi.png').convert_alpha()
-nishiat = pygame.image.load('imagens/nishiasf.png').convert_alpha()
-zeca = pygame.image.load('imagens/zecau.png').convert_alpha()
-zecaat = pygame.image.load('imagens/zecausf.png').convert_alpha()
+nishi = pygame.transform.scale(pygame.image.load('imagens/nishi.png').convert_alpha(),(200,200))
+nishiat = pygame.transform.scale(pygame.image.load('imagens/nishiasf.png').convert_alpha(),(200,200))
+zeca = pygame.transform.scale(pygame.image.load('imagens/zecau.png').convert_alpha(),(200,200))
+zecaat = pygame.transform.scale(pygame.image.load('imagens/zecausf.png').convert_alpha(),(200,200))
 shrek = pygame.image.load('imagens/shreksbsf.png').convert_alpha()
 shrekat = pygame.image.load('imagens/shrekbsf.png').convert_alpha()
 # imagem_pqn = pygame.transform.scale(img1, (70, 70))
