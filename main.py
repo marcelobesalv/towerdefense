@@ -31,6 +31,8 @@ bgImg = pygame.image.load('imagens/monkeymeadow.jpg')
 bgImg = pygame.transform.scale(bgImg, (screen_jogo_width, screen_height))
 
 
+
+
 menuImg = pygame.image.load('imagens/loonbs.jpg')
 menuImg = pygame.transform.scale(menuImg, (screen_width, screen_height))
 game_display = pygame.display.set_mode((screen_width, screen_height))
