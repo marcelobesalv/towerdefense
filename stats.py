@@ -45,7 +45,7 @@ waves = [
         2:3,
         3:2,
         4:1,
-        5:2,
+        5:3,
         6:0
     },
     { 
@@ -94,26 +94,26 @@ waves = [
 statsBloon = {
     1: {
         'health' : 1,
-        'speed': 2
-    },
-    2: {
-        'health' : 2,
         'speed': 3
     },
-    3: {
-        'health' : 3,
+    2: {
+        'health' : 5,
         'speed': 4
     },
-    4: {
-        'health' : 4,
+    3: {
+        'health' : 6,
         'speed': 5
+    },
+    4: {
+        'health' : 8,
+        'speed': 6
     }, 
     5: {
-        'health' : 8,
+        'health' : 15,
         'speed': 15
     },
     6: {
         'health' : 75,
-        'speed': 1
+        'speed': 3
     }
 }

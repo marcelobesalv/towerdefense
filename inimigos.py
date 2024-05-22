@@ -59,17 +59,17 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
     def checaVida(self, world):
         if self.health <= 0:
             if self.tipo == 1:
-                world.money += 5
+                world.money += 3
             elif self.tipo == 2:
-                world.money += 10
+                world.money += 5
             elif self.tipo == 3:
-                world.money += 20
+                world.money += 10
             elif self.tipo == 4:
-                world.money += 30
+                world.money += 15
             elif self.tipo == 5:
-                world.money += 60
+                world.money += 30
             elif self.tipo == 6:
-                world.money += 150
+                world.money += 75
             world.kills += 1
             pygame.mixer.Sound.play(popSound)
             self.kill()

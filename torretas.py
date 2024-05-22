@@ -17,7 +17,7 @@ class Torres(pygame.sprite.Sprite):
         self.tipo_torre = tipo_torre
         
         self.range = r
-        self.cooldown = 500
+        self.cooldown = 550
         self.target = None
         self.angle = 180
         
