@@ -247,6 +247,7 @@ def jogo():
             iniciarLvl = False
             world.level += 1
             ultimoBloon = pygame.time.get_ticks()
+            world.spawnados = 0
             world.kills = 0
             world.passou = 0
             world.listaBloon = []
