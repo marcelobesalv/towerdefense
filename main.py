@@ -271,7 +271,7 @@ def jogo():
             torre_selecionada = None
 
         # Update dos grupos e desenho dos inimigos
-        grupo_inimigos.update()
+        grupo_inimigos.update(world)
         grupo_inimigos.draw(screen)
         grupo_torres.update (grupo_inimigos)
         grupo_torres.draw(screen)

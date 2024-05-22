@@ -16,9 +16,9 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         self.rect = self.image.get_rect() 
         self.rect.center = self.pos
 
-    def update(self):
+    def update(self, world):
         self.mover()
-        self.checaVida()
+        self.checaVida(world)
 
     def mover(self): #funcao de mover
         if self.target_waypoint < len(self.waypoints):
@@ -26,6 +26,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
             self.movement = self.target - self.pos
         else:
             self.kill()
+            world.health -= 10
             world.passou += 1
             print(world.passou)
             print('--------------------------------------------------------')
@@ -40,7 +41,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
             self.target_waypoint += 1 
         self.rect.center = self.pos
 
-    def checaVida(self):
+    def checaVida(self, world):
         if self.health <= 0:
             world.money += 50
             world.kills += 1
