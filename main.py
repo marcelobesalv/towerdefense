@@ -134,7 +134,9 @@ shrek = pygame.image.load('imagens/shreksbsf.png').convert_alpha()
 shrekat = pygame.image.load('imagens/shrekbsf.png').convert_alpha()
 # imagem_pqn = pygame.transform.scale(img1, (70, 70))
 
-
+def infinte():
+    dic = {1:random.randint(0,10),2:random.randint(0,10),3:random.randint(0,10),4:random.randint(0,10),5:random.randint(0,10),6:random.randint(0,10)}
+    waves.append(dic)
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, True, color)
     textrect = textobj.get_rect()
@@ -306,6 +308,7 @@ def jogo():
         if world.health <= 0:
             gameover()
         # Update dos grupos e desenho dos inimigos
+        infinte()
         grupo_inimigos.update(world)
         grupo_inimigos.draw(screen)
         grupo_torres.update (grupo_inimigos)
