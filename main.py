@@ -6,6 +6,7 @@ from torretas import *
 from botao import *
 from mundo import*
 
+
 # pygame setup
 pygame.init()
 pygame.display.set_caption('loonbs')
@@ -55,7 +56,11 @@ torreta_botao2 = Botao(screen_jogo_width + 30, 180,comprar_torre2Img)
 torreta_botao3 = Botao(screen_jogo_width + 30, 240, comprar_torre3Img)
 cancelar_botao = Botao(screen_jogo_width + 30, 300, buttonImg)
 
+def gameover():
+    gameover = pygame.transform.scale(pygame.image.load('imagens/gameover.png'),(1600,900))
 
+    game_display.blit(gameover,(0,0))
+    draw_text(f'Nivel atingido:{world.level-1}',fonte_pequena,(255,255,255),screen,800,800)
 #criando torretas
 def cria_torreta(posicao_mouse, tipo_torre):
     r = 0
@@ -298,7 +303,8 @@ def jogo():
         if cancelar_botao.draw(screen):
             print('Botão de cancelar pressionado')
             torre_selecionada = None
-
+        if world.health <= 0:
+            gameover()
         # Update dos grupos e desenho dos inimigos
         grupo_inimigos.update(world)
         grupo_inimigos.draw(screen)
