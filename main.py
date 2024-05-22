@@ -16,7 +16,7 @@ painel_lateral = 320
 
 ultimoBloon = pygame.time.get_ticks()
 spawnCd = 500
-world = mundo()
+
 
 
 screen = pygame.display.set_mode((screen_width, screen_height))
