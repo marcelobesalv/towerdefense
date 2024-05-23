@@ -20,5 +20,6 @@ Créditos:
  - Imagem de fundo do jogo: BloonsTD6
  - Imagens dos inimigos: Clash of Clans
  - Efeito sonoro de "pop": Pixabay
+ - Alguns dos métodos de inimigos e torres foram aprendidos no canal: https://www.youtube.com/@CodingWithRuss
  - Imagens da torres: Marcelo Alves
  - Imagem da tela final: Marcelo Alves
