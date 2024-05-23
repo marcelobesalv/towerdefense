@@ -61,6 +61,10 @@ def gameover():
 
     game_display.blit(gameover,(0,0))
     draw_text(f'Nivel atingido:{world.level-1}',fonte_pequena,(255,255,255),screen,800,800)
+    for enemy in grupo_inimigos:
+        enemy.kill()
+    for torre in grupo_torres:
+        torre.kill()
 #criando torretas
 def cria_torreta(posicao_mouse, tipo_torre):
     r = 0

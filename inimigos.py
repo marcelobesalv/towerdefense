@@ -77,5 +77,5 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
 
     def scale():
         for i in statsBloon.values():
-            i['health']*= 1.05
+            i['health']*= 1.1
         
