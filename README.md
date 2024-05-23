@@ -10,6 +10,10 @@ Como jogar: Na tela inicial, clique "Jogar" para entrar no jogo. A primeira cois
 
 Vídeo do jogo: 
 
+https://github.com/marcelobesalv/towerdefense/assets/166611596/cfe925f1-ec37-4b86-b459-3699421c118d
+
+
+
 
 Créditos:
  - Imagem da tela inicial: gerada pelo chat-GPT
