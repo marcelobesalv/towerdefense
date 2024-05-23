@@ -19,10 +19,11 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
         self.rect = self.image.get_rect() 
         self.rect.center = self.pos
         self.tipo = tipo
-
+        
     def update(self, world):
         self.mover()
         self.checaVida(world)
+        
 
     def mover(self): #funcao de mover
         if self.target_waypoint < len(self.waypoints):
@@ -73,3 +74,8 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
             world.kills += 1
             pygame.mixer.Sound.play(popSound)
             self.kill()
+
+    def scale():
+        for i in statsBloon.values():
+            i['health']*= 1.05
+        

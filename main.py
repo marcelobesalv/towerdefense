@@ -234,6 +234,7 @@ def main_menu():
 
 # Função principal do jogo
 def jogo():
+
     global ultimoBloon
     world.spawnar()
     torre_selecionada = None
@@ -278,7 +279,7 @@ def jogo():
                     grupo_inimigos.add(enemy)
                     world.spawnados += 1
                     ultimoBloon = pygame.time.get_ticks()
-        print
+        
         if world.levelCompleto() == True:
             iniciarLvl = False
             world.level += 1
@@ -288,6 +289,8 @@ def jogo():
             world.passou = 0
             world.listaBloon = []
             world.spawnar()
+            inimigo.scale()
+            
 
         game_display.blit(bgImg, (0, 0))
         
@@ -316,7 +319,8 @@ def jogo():
         grupo_torres.draw(screen)
         for enemy in grupo_inimigos:
             enemy.mover()
-
+            print(enemy.health)
+            
         pygame.display.flip()
         pygame.display.update()
 

@@ -25,7 +25,7 @@ class mundo():
 
 
     def levelCompleto(self):
-        print(self.kills, self.passou, self.listaBloon)
+        
         if (self.kills + self.passou) >= len(self.listaBloon):
             print('level concluido')
             return True
