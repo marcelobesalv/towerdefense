@@ -36,7 +36,6 @@ class Torres(pygame.sprite.Sprite):
                 if i.health > 0:
                     self.angle = math.degrees(math.atan2(-y_dist, x_dist))
                     self.target = i
-                    print('alvo')
                     if self.tipo_torre == 1:
                         self.target.health -= 1
                     elif self.tipo_torre == 2:
