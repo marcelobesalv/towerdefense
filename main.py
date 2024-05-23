@@ -289,7 +289,8 @@ def jogo():
             world.passou = 0
             world.listaBloon = []
             world.spawnar()
-            inimigo.scale()
+            if world.level > 11:
+                inimigo.scale()
             
 
         game_display.blit(bgImg, (0, 0))
