@@ -306,13 +306,10 @@ def jogo():
         #tentativa de draw dos botoes
         #colcar torreta
         if torreta_botao1.draw(screen):
-            print('testando')
             torre_selecionada = 1
         if torreta_botao2.draw(screen):
-            print('testando2')
             torre_selecionada = 2
         if torreta_botao3.draw(screen):
-            print('testando3')
             torre_selecionada = 3
         if world.health <= 0:
             gameover()
@@ -324,7 +321,6 @@ def jogo():
         grupo_torres.draw(screen)
         for enemy in grupo_inimigos:
             enemy.mover()
-            print(enemy.health)
             
         pygame.display.flip()
         pygame.display.update()

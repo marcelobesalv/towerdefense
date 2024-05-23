@@ -44,8 +44,7 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
                 world.health -= 100
             self.kill()
             world.passou += 1
-            print(world.passou)
-            print('--------------------------------------------------------')
+
         #calculando a distancia
         distancia = self.movement.length()
         #checando  se a distancai é maior doq a velocidade do inimigo
@@ -77,5 +76,5 @@ class inimigo(pygame.sprite.Sprite): #sprite da mais funcionalidade ao inimigo
 
     def scale():
         for i in statsBloon.values():
-            i['health']*= 1.1
+            i['health']*= 1.3
         
